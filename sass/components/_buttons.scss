@@ -1,0 +1,17 @@
+@use '../abstracts/variables' as *;
+
+.btn {
+	font: 1.5rem $font-display;
+	text-transform: uppercase;
+	background-color: $color-primary;
+	color: #fff;
+	padding: 1.8rem 3rem;
+	border: none;
+	border-radius: 0;
+	cursor: pointer;
+	transition: all 0.2s;
+
+	&:hover {
+		background-color: $color-primary-dark;
+	}
+}

@@ -1,0 +1,42 @@
+@use '../abstracts/variables' as *;
+
+.features {
+	grid-column: center-start / center-end;
+
+	margin: 15rem 0;
+	display: grid;
+	// grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+	grid-gap: 6rem;
+	align-items: start;
+
+	@media only screen and (max-width: $sm) {
+		margin: 6rem 0;
+		grid-gap: 3rem;
+	}
+}
+
+// Component
+.feature {
+	display: grid;
+	grid-template-columns: min-content 1fr;
+	grid-gap: 1.5rem 2.5rem;
+	// row: 1.5rem | col: 2.5rem
+
+	@media only screen and (max-width: $sm) {
+		grid-row-gap: 1rem;
+	}
+
+	&__icon {
+		fill: $color-primary;
+		width: 4.5rem;
+		height: 4.5rem;
+		grid-row: 1 / span 2;
+		// grid-row: 1 / -1; -1 is for explicit grid (we define in grid)
+		transform: translateY(-1rem);
+	}
+
+	&__text {
+		font-size: 1.7rem;
+	}
+}

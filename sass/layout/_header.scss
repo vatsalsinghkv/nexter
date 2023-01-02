@@ -1,0 +1,87 @@
+@use '../abstracts/variables' as *;
+
+.header {
+	grid-column: full-start / col-end 6;
+
+	background: linear-gradient(
+			rgba($color-secondary, 0.93),
+			rgba($color-secondary, 0.93)
+		),
+		url('#{$img-path}/hero.jpeg');
+	background-size: cover;
+
+	padding: 8rem;
+	padding-top: 4rem;
+	display: grid;
+	// First row to take all empty spaces
+	grid-template-rows: 1fr min-content minmax(min-content, 6rem) 1fr;
+	grid-template-columns: minmax(min-content, max-content);
+	grid-row-gap: 1.5rem;
+	// place-content: center;
+	justify-content: center;
+
+	@media only screen and (max-width: $md-sm) {
+		grid-column: 1 / -1;
+	}
+
+	@media only screen and (max-width: $sm) {
+		padding: 5rem;
+	}
+
+	&__logo {
+		height: 3rem;
+		justify-self: center;
+	}
+
+	&__btn {
+		align-self: start;
+		justify-self: start;
+	}
+
+	&__seenon-text {
+		color: $color-grey-light-2;
+		margin-bottom: 0.5rem;
+
+		display: grid;
+		grid-template-columns: 1fr max-content 1fr; // max-content = auto
+		grid-column-gap: 1.5rem;
+		align-items: center;
+
+		/* 
+			  col-1 			 col-2			col-3
+			______________Seen on______________
+		*/
+
+		&::before,
+		&::after {
+			content: '';
+			display: block;
+			height: 1px;
+			background-color: currentColor; // Parent's color
+
+			/* 
+			___________________  row-1
+
+			Text {Seen on}			 row-2
+			___________________  row-3
+			*/
+
+			// Use flex or grid to align horizontally
+			// grid-template-columns: 1fr max-content 1fr;
+		}
+	}
+
+	&__seenon-logos {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-column-gap: 3rem;
+		place-items: center;
+
+		img {
+			// display: block;
+			max-height: 2.5rem;
+			max-width: 100%;
+			filter: brightness(70%);
+		}
+	}
+}

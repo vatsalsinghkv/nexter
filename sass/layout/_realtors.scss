@@ -1,0 +1,45 @@
+@use '../abstracts/variables' as *;
+
+.realtors {
+	background-color: $color-secondary;
+	grid-column: col-end 6 / -1;
+
+	padding: 3rem;
+	// To center elements
+	display: grid;
+	place-content: center;
+	justify-items: center;
+
+	@media only screen and (max-width: $md-sm) {
+		grid-column: 1 / -1;
+		grid-row: 3 / 4;
+	}
+
+	&__list {
+		display: grid;
+		grid-template-columns: min-content max-content;
+		// grid-gap: row col;
+		grid-gap: 5vh 2rem;
+		align-items: center;
+
+		@media only screen and (max-width: $md-sm) {
+			grid-template-columns: repeat(3, min-content max-content);
+		}
+
+		@media only screen and (max-width: $sm) {
+			grid-template-columns: min-content max-content;
+		}
+	}
+
+	&__img {
+		width: 7rem;
+		border-radius: 50%;
+		display: block;
+	}
+
+	&__sold {
+		text-transform: uppercase;
+		margin-top: 1rem;
+		color: $color-grey-light-2;
+	}
+}

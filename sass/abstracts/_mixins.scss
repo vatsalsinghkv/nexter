@@ -1,0 +1,37 @@
+@use '../abstracts/variables' as *;
+
+@mixin colorMode {
+	&--light {
+		color: $color-grey-light-1;
+	}
+
+	&--dark {
+		color: $color-grey-dark-1;
+	}
+}
+
+// GRID
+@mixin gridCenter {
+	display: grid;
+	place-content: center;
+}
+
+// FLEXBOX
+@mixin flexCenter($direction: column) {
+	display: flex;
+	flex-direction: $direction;
+	align-items: center;
+	justify-content: center;
+}
+
+@mixin flexCenterVertical($direction: column) {
+	display: flex;
+	flex-direction: $direction;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+// Box Styles
+@mixin boxShadow($shadowY, $shadowBlur, $opacity: 0.2) {
+	box-shadow: 0 $shadowY $shadowBlur rgba(0, 0, 0, $opacity);
+}

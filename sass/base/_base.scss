@@ -1,0 +1,60 @@
+@use '../abstracts/variables' as *;
+@use 'sass:math';
+
+*,
+*::after,
+*::before {
+	padding: 0;
+	margin: 0;
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+	font-size: math.div(100, 16) * 10%; //62.5% - 10px
+
+	@media only screen and (max-width: $lg) {
+		font-size: math.div(100, 16) * 8%; // 8px
+	}
+}
+
+body {
+	font-family: $font-primary;
+	font-size: $font-size;
+}
+
+.container {
+	display: grid;
+	// Header | Features | Story | Houses | Gallery | Footer
+	grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+	// min-content = auto
+
+	// 8 col layout - 80px for side bar | 1fr to give space
+	grid-template-columns:
+		[sidebar-start] 8rem [sidebar-end full-start]
+		minmax(6rem, 1fr)
+		[center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end])
+		[center-end ]
+		minmax(6rem, 1fr) [full-end];
+	// 1140px / 8 =  142.5px / 10 = 14rem
+
+	@media only screen and (max-width: $md) {
+		// grid-template-rows: Sidebar |
+		grid-template-rows: 7rem 80vh min-content 40vw repeat(3, min-content);
+		grid-template-columns:
+			[full-start] minmax(6rem, 1fr)
+			[center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end])
+			[center-end]
+			minmax(6rem, 1fr) [full-end];
+	}
+
+	@media only screen and (max-width: $md-sm) {
+		// grid-template-rows: Sidebar | Header | Realtours | Story
+		grid-template-rows: 7rem calc(100vh - 7rem); // Row height: min-content default (auto)
+		grid-template-columns:
+			[full-start] minmax(6rem, 1fr)
+			[center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end])
+			[center-end]
+			minmax(6rem, 1fr) [full-end];
+	}
+}
